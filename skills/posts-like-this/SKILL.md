@@ -20,7 +20,11 @@ A lead list starts from an ideal customer profile. This applies the same idea to
 - `read <url>...`: shows a post in full, including the author's whole X thread, X Articles and every outbound link. Use it to judge a post whose excerpt doesn't settle it. Web fetch tools can't read x.com.
 - `mark DIR match|maybe|no <url>... --note "..."` records verdicts. `seen DIR` gives a summary.
 
-**X search needs a web search tool that can filter by date.** The Firecrawl MCP server's `firecrawl_search` (with `tbs`) is what this was built and tested with. Reddit and HN need nothing extra.
+**X search needs Firecrawl.** The Firecrawl MCP server's `firecrawl_search` (with `tbs`) is what this was built and tested with. Reddit and HN need nothing extra. Before the first search of a run, check that `firecrawl_search` is available (it may be a deferred tool to load first). If it isn't, don't stop:
+1. Tell the user, in two lines, that X search needs Firecrawl. Give the quickest setup, which needs no account: `claude mcp add --scope user --transport http firecrawl https://mcp.firecrawl.dev/v2/mcp`. They then restart Claude Code. For regular runs, suggest signing in instead: the same command with `https://mcp.firecrawl.dev/v2/mcp-oauth`, then `/mcp` to finish the browser sign-in. The README has all three options.
+2. Run Reddit and HN as usual, and note in the digest that X wasn't searched.
+
+If Firecrawl answers that its daily limit or credits ran out, say so with the line it provides, and finish the run on Reddit and HN.
 
 ## Pick the mode
 

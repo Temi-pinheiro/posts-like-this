@@ -56,8 +56,36 @@ npx skills add Temi-pinheiro/posts-like-this -g -a claude-code
 ### Requirements
 
 - Python 3.10+ and `curl`. The helper script uses only the standard library.
-- **For X search:** a web search tool that can filter by date. It was built and tested with the [Firecrawl MCP server](https://github.com/firecrawl/firecrawl-mcp-server) (`firecrawl_search` with `tbs`). Without one, Reddit and Hacker News still work.
 - X posts are read through [fxtwitter](https://github.com/FixTweet/FxTwitter)'s free public API. No X account or API key is needed.
+- **Searching X needs Firecrawl.** Reddit and Hacker News work without it. To set it up, see the next section.
+
+### Set up Firecrawl (for X search)
+
+The skill finds X posts with the [Firecrawl MCP server](https://docs.firecrawl.dev/mcp-server)'s `firecrawl_search`. Pick one of three ways to connect it. Each is one command in your terminal; then restart Claude Code.
+
+**1. No account (quickest).** This is rate-limited to a daily allowance, but search works:
+
+```
+claude mcp add --scope user --transport http firecrawl https://mcp.firecrawl.dev/v2/mcp
+```
+
+**2. Sign in with a Firecrawl account** (recommended for regular runs). Your account's credits replace the daily allowance:
+
+```
+claude mcp add --scope user --transport http firecrawl https://mcp.firecrawl.dev/v2/mcp-oauth
+```
+
+Then type `/mcp` in Claude Code, pick `firecrawl`, and finish the sign-in in your browser.
+
+**3. An API key.** Create one at [firecrawl.dev/app/api-keys](https://www.firecrawl.dev/app/api-keys), then run:
+
+```
+claude mcp add --scope user --transport http firecrawl https://mcp.firecrawl.dev/v2/mcp --header "Authorization: Bearer YOUR_KEY"
+```
+
+`--scope user` makes Firecrawl available in every folder. Without it, it only works in the folder you ran the command from.
+
+To check it worked, run `/mcp` in Claude Code: `firecrawl` should show as connected. If it isn't connected when you run the skill, the skill says so, shows the command above, and carries on with Reddit and Hacker News. Allowances and prices change, so check Firecrawl's [rate limits](https://docs.firecrawl.dev/rate-limits) for the current numbers.
 
 ## Use
 
