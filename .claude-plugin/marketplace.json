@@ -1,0 +1,15 @@
+{
+  "name": "posts-like-this",
+  "description": "posts-like-this: give Claude a post, get a feed of posts like it.",
+  "owner": {
+    "name": "Temitope Pinheiro"
+  },
+  "plugins": [
+    {
+      "name": "posts-like-this",
+      "description": "Give Claude a post, get a feed of posts like it, across X, Reddit and Hacker News.",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}

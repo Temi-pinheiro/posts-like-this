@@ -1,0 +1,13 @@
+{
+  "name": "posts-like-this",
+  "version": "0.1.0",
+  "description": "Give Claude a post, get a feed of posts like it. Builds a post profile from a sample post, searches X, Reddit and Hacker News for new posts that fit, judges each one, and writes a ranked digest that never repeats a post.",
+  "author": {
+    "name": "Temitope Pinheiro",
+    "url": "https://temipinheiro.com"
+  },
+  "homepage": "https://github.com/Temi-pinheiro/posts-like-this",
+  "repository": "https://github.com/Temi-pinheiro/posts-like-this",
+  "license": "MIT",
+  "keywords": ["social", "x", "twitter", "reddit", "hacker-news", "research", "feeds"]
+}
